@@ -8,30 +8,26 @@ export default function Hero() {
   return (
 <section
   dir="ltr"
-  className="relative overflow-hidden flex flex-col md:flex-row items-center justify-start bg-[var(--light-bg)]
-             min-h-screen md:min-h-screen pt-2 md:pt-0"
+  className="relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-start bg-[var(--light-bg)] min-h-screen"
 >
-      {/* Arka plan gradient */}
-      <div className="absolute inset-0 animated-bg opacity-30"></div>
 
-      {/* Işık efektleri */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[90%] h-[90%] blur-3xl opacity-25"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 30%, var(--primary-light), transparent 70%)",
-        }}
-      />
-      <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[70%] blur-3xl opacity-20"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 80%, var(--accent), transparent 70%)",
-        }}
-      />
+{/* Arka plan gradient */}
+<div className="absolute inset-0 animated-bg opacity-20 pointer-events-none"></div>
+
+{/* Üst ışık */}
+<div
+  className="absolute -top-[10vh] left-1/2 -translate-x-1/2 w-[140vw] h-[60vh] md:w-[90%] md:h-[90%] blur-3xl opacity-20 pointer-events-none"
+  style={{ background: "radial-gradient(circle at 50% 30%, var(--primary-light), transparent 70%)" }}
+/>
+
+{/* Alt ışık */}
+<div
+  className="absolute -bottom-[10vh] left-1/2 -translate-x-1/2 w-[140vw] h-[60vh] md:w-[80%] md:h-[70%] blur-3xl opacity-15 pointer-events-none"
+  style={{ background: "radial-gradient(circle at 50% 80%, var(--accent), transparent 70%)" }}
+/>
 
       {/* Düzen */}
-      <div className="relative z-10 container mx-auto grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-16 px-6 md:px-16 items-center">
+<div className="relative z-10 w-full max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-16 px-6 md:px-16 items-center">
         {/* Sol sütun */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -140,22 +136,7 @@ export default function Hero() {
   className="flex justify-center items-center gap-4 md:gap-6 mt-8 flex-wrap"
 >
  
-  <motion.a
-    href="https://wa.me/5343087254"
-    target="_blank"
-    rel="noopener noreferrer"
-    whileHover={{
-      scale: 1.06,
-      boxShadow: "0 0 35px rgba(255,107,0,0.3)",
-    }}
-    whileTap={{ scale: 0.97 }}
-    transition={{ type: "spring", stiffness: 220, damping: 14 }}
-    className="flex items-center justify-center gap-3 px-8 py-4 rounded-full font-semibold text-lg md:text-xl border-2
-               text-[var(--primary-dark)] bg-[var(--white)] border-[var(--primary)] transition-all duration-300"
-  >
-    <MessageCircle className="w-6 h-6 text-[var(--primary-dark)]" strokeWidth={2.2} />
-    تواصل واتساب
-  </motion.a>
+  
   <motion.a
     href="/logo-wizard"
     whileHover={{
