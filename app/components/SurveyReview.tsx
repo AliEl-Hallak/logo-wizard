@@ -54,14 +54,18 @@ function SummaryCard({ title, icon, children }: SummaryCardProps) {
   return (
     <motion.div
       variants={cardVariants}
-      className="bg-gradient-to-br from-white/90 to-orange-50/30 rounded-2xl p-5 shadow-lg border-2 border-orange-100 hover:shadow-xl transition-all duration-300 hover:scale-[1.01] backdrop-blur-sm"
+      className="rounded-2xl p-5 shadow-lg border-2 hover:shadow-xl transition-all duration-300 hover:scale-[1.01] backdrop-blur-sm"
+      style={{
+        background: 'linear-gradient(135deg, var(--white), var(--light-bg))',
+        borderColor: 'var(--border)'
+      }}
     >
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-extrabold text-gray-900 flex items-center gap-2 text-right">
-          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-100 text-orange-600">
+        <h3 className="text-lg font-extrabold flex items-center gap-2 text-right" style={{ color: 'var(--text-dark)' }}>
+          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full" style={{ backgroundColor: 'var(--border)', color: 'var(--primary)' }}>
             {icon}
           </span>
-          <span className="bg-gradient-to-r from-orange-600 via-amber-500 to-orange-400 bg-clip-text text-transparent">
+          <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(90deg, var(--primary-dark), var(--accent), var(--primary-light))' }}>
             {title}
           </span>
         </h3>
@@ -86,10 +90,20 @@ function DataRow({ label, value }: DataRowProps) {
   const text = Array.isArray(value) ? value.join('، ') : value;
 
   return (
-    <motion.div variants={rowItemVariants} className="text-right bg-white/70 rounded-xl p-3 border border-orange-100 hover:border-orange-200 transition-colors">
+    <motion.div
+      variants={rowItemVariants}
+      className="text-right rounded-xl p-3 border transition-colors"
+      style={{ backgroundColor: 'var(--white)', borderColor: 'var(--border)' }}
+    >
       <div className="flex flex-row items-center gap-3">
-        <dt className="text-sm md:text-base font-bold text-orange-600 tracking-wide whitespace-nowrap">{label}</dt>
-        <dd className="text-sm md:text-base text-gray-900 font-semibold flex-1 min-w-0 truncate" title={text}>
+        <dt className="text-sm md:text-base font-bold tracking-wide whitespace-nowrap" style={{ color: 'var(--primary)' }}>
+          {label}
+        </dt>
+        <dd
+          className="text-sm md:text-base font-semibold flex-1 min-w-0 truncate"
+          style={{ color: 'var(--text-dark)' }}
+          title={text}
+        >
           {text}
         </dd>
       </div>
@@ -116,7 +130,8 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
           variants={buttonVariants}
           type="button"
           onClick={() => onEdit(1)}
-          className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 border-orange-200 text-orange-700 font-bold hover:bg-orange-50 hover:border-orange-400 transition-all"
+          className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 font-bold transition-all"
+          style={{ borderColor: 'var(--border)', color: 'var(--primary-dark)' }}
         >
           {Icons.pencil}
           <span>تعديل</span>
@@ -134,7 +149,8 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
           variants={buttonVariants}
           type="button"
           onClick={() => onEdit(2)}
-          className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 border-orange-200 text-orange-700 font-bold hover:bg-orange-50 hover:border-orange-400 transition-all"
+          className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 font-bold transition-all"
+          style={{ borderColor: 'var(--border)', color: 'var(--primary-dark)' }}
         >
           {Icons.pencil}
           <span>تعديل</span>
@@ -155,7 +171,8 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
           variants={buttonVariants}
           type="button"
           onClick={() => onEdit(3)}
-          className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 border-orange-200 text-orange-700 font-bold hover:bg-orange-50 hover:border-orange-400 transition-all"
+          className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 font-bold transition-all"
+          style={{ borderColor: 'var(--border)', color: 'var(--primary-dark)' }}
         >
           {Icons.pencil}
           <span>تعديل</span>
@@ -174,7 +191,8 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
           variants={buttonVariants}
           type="button"
           onClick={() => onEdit(4)}
-          className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 border-orange-200 text-orange-700 font-bold hover:bg-orange-50 hover:border-orange-400 transition-all"
+          className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 font-bold transition-all"
+          style={{ borderColor: 'var(--border)', color: 'var(--primary-dark)' }}
         >
           {Icons.pencil}
           <span>تعديل</span>
@@ -184,17 +202,23 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
       {/* المراجع والملفات */}
       <SummaryCard title="المراجع والملفات" icon={Icons.image}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div className="text-right bg-white/70 rounded-xl p-3 border border-orange-100">
+          <div className="text-right rounded-xl p-3 border" style={{ backgroundColor: 'var(--white)', borderColor: 'var(--border)' }}>
             <div className="flex flex-row items-center gap-3">
-              <dt className="text-sm md:text-base font-bold text-orange-600 tracking-wide whitespace-nowrap">الشعارات الملهمة</dt>
-              <dd className="text-sm md:text-base text-gray-900 font-semibold flex-1 min-w-0">
+              <dt className="text-sm md:text-base font-bold tracking-wide whitespace-nowrap" style={{ color: 'var(--primary)' }}>الشعارات الملهمة</dt>
+              <dd className="text-sm md:text-base font-semibold flex-1 min-w-0" style={{ color: 'var(--text-dark)' }}>
                 {data.inspirationLogos ? (
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-orange-200 bg-orange-50 text-orange-700 text-xs font-bold">
+                  <span
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold"
+                    style={{ border: '1px solid var(--border)', backgroundColor: 'var(--light-bg)', color: 'var(--primary-dark)' }}
+                  >
                     {Icons.image}
                     <span>تم الرفع</span>
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-orange-200 bg-orange-50 text-orange-700 text-xs font-bold">
+                  <span
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold"
+                    style={{ border: '1px solid var(--border)', backgroundColor: 'var(--light-bg)', color: 'var(--primary-dark)' }}
+                  >
                     {Icons.image}
                     <span>لا يوجد</span>
                   </span>
@@ -203,17 +227,23 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
             </div>
           </div>
           <DataRow label="وصف الشعار القديم" value={data.oldLogoDescription} />
-          <div className="text-right bg-white/70 rounded-xl p-3 border border-orange-100">
+          <div className="text-right rounded-xl p-3 border" style={{ backgroundColor: 'var(--white)', borderColor: 'var(--border)' }}>
             <div className="flex flex-row items-center gap-3">
-              <dt className="text-sm md:text-base font-bold text-orange-600 tracking-wide whitespace-nowrap">الشعار القديم</dt>
-              <dd className="text-sm md:text-base text-gray-900 font-semibold flex-1 min-w-0">
+              <dt className="text-sm md:text-base font-bold tracking-wide whitespace-nowrap" style={{ color: 'var(--primary)' }}>الشعار القديم</dt>
+              <dd className="text-sm md:text-base font-semibold flex-1 min-w-0" style={{ color: 'var(--text-dark)' }}>
                 {data.oldLogoFile ? (
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-orange-200 bg-orange-50 text-orange-700 text-xs font-bold">
+                  <span
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold"
+                    style={{ border: '1px solid var(--border)', backgroundColor: 'var(--light-bg)', color: 'var(--primary-dark)' }}
+                  >
                     {Icons.image}
                     <span>تم الرفع</span>
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-orange-200 bg-orange-50 text-orange-700 text-xs font-bold">
+                  <span
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold"
+                    style={{ border: '1px solid var(--border)', backgroundColor: 'var(--light-bg)', color: 'var(--primary-dark)' }}
+                  >
                     {Icons.image}
                     <span>لا يوجد</span>
                   </span>
@@ -228,7 +258,8 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
           variants={buttonVariants}
           type="button"
           onClick={() => onEdit(5)}
-          className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 border-orange-200 text-orange-700 font-bold hover:bg-orange-50 hover:border-orange-400 transition-all"
+          className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 font-bold transition-all"
+          style={{ borderColor: 'var(--border)', color: 'var(--primary-dark)' }}
         >
           {Icons.pencil}
           <span>تعديل</span>

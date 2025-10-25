@@ -130,19 +130,22 @@ export default function Home() {
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 0.2 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="fixed top-20 right-10 w-64 h-64 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
+        style={{ backgroundColor: 'var(--primary-light)' }}
+        className="fixed top-20 right-10 w-64 h-64 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
       />
       <motion.div 
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 0.2 }}
         transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-        className="fixed bottom-20 left-10 w-72 h-72 bg-amber-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
+        style={{ backgroundColor: 'var(--accent)' }}
+        className="fixed bottom-20 left-10 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
       />
       <motion.div 
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 0.2 }}
         transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-        className="fixed top-1/2 left-1/2 w-80 h-80 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
+        style={{ backgroundColor: 'var(--accent)' }}
+        className="fixed top-1/2 left-1/2 w-80 h-80 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
       />
       
       <div className="max-w-4xl mx-auto relative">
@@ -158,7 +161,11 @@ export default function Home() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-3xl sm:text-6xl font-black mb-4 bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-500 bg-clip-text text-transparent"
+            className="text-3xl sm:text-6xl font-black mb-4 bg-clip-text text-transparent"
+            style={{
+              backgroundImage: 'linear-gradient(to right, var(--primary-dark), var(--accent), var(--primary-light))',
+              WebkitBackgroundClip: 'text'
+            }}
           >
             استبيان تصميم الشعار
           </motion.h1>
@@ -177,16 +184,28 @@ export default function Home() {
             <div className="flex items-center justify-center gap-4 md:gap-6">
               {/* Left decoration */}
               <div className="flex-1 max-w-[80px] md:max-w-[150px] flex items-center gap-1">
-                <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
-                <div className="flex-1 h-[3px] bg-gradient-to-l from-orange-400 via-amber-300 to-transparent rounded-full" />
+                <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--primary-light)', boxShadow: '0 4px 8px var(--shadow)' }} />
+                <div className="flex-1 h-[3px] rounded-full" style={{ background: 'linear-gradient(to left, var(--primary-light), var(--accent), transparent)' }} />
               </div>
               {/* Title */}
               {isReview ? (
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-black bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 bg-clip-text text-transparent animate-gradient whitespace-nowrap px-2">
+                <h2 
+                  className="text-xl sm:text-2xl md:text-3xl font-black bg-clip-text text-transparent animate-gradient whitespace-nowrap px-2"
+                  style={{ 
+                    backgroundImage: 'linear-gradient(to right, var(--primary-light), var(--accent), var(--primary-dark))',
+                    WebkitBackgroundClip: 'text'
+                  }}
+                >
                   مراجعة البيانات النهائية
                 </h2>
               ) : (
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-black bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 bg-clip-text text-transparent animate-gradient whitespace-nowrap px-2">
+                <h2 
+                  className="text-xl sm:text-2xl md:text-3xl font-black bg-clip-text text-transparent animate-gradient whitespace-nowrap px-2"
+                  style={{ 
+                    backgroundImage: 'linear-gradient(to right, var(--primary-light), var(--accent), var(--primary-dark))',
+                    WebkitBackgroundClip: 'text'
+                  }}
+                >
                   {currentStep === 1 ? 'معلومات العميل' :
                    currentStep === 2 ? 'تفاصيل الشعار' :
                    currentStep === 3 ? 'خلفية المشروع' :
@@ -196,8 +215,8 @@ export default function Home() {
               )}
               {/* Right decoration */}
               <div className="flex-1 max-w-[80px] md:max-w-[150px] flex items-center gap-1">
-                <div className="flex-1 h-[3px] bg-gradient-to-r from-orange-400 via-amber-300 to-transparent rounded-full" />
-                <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" style={{ animationDelay: '0.5s' }} />
+                <div className="flex-1 h-[3px] rounded-full" style={{ background: 'linear-gradient(to right, var(--primary-light), var(--accent), transparent)' }} />
+                <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--primary-light)', animationDelay: '0.5s', boxShadow: '0 4px 8px var(--shadow)' }} />
               </div>
             </div>
           </div>
@@ -640,7 +659,8 @@ export default function Home() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="flex flex-row gap-3 mt-8 pt-6 border-t-2 border-orange-100"
+              className="flex flex-row gap-3 mt-8 pt-6 border-t-2"
+              style={{ borderColor: 'var(--light-bg)' }}
             >
               {(currentStep > 1 || isReview) && (
                 <motion.button
@@ -648,7 +668,19 @@ export default function Home() {
                   whileTap={{ scale: 0.95 }}
                   type="button"
                   onClick={prevStep}
-                  className="flex-1 px-4 py-3 bg-white border-2 border-orange-200 text-orange-700 rounded-xl font-bold hover:bg-orange-50 hover:border-orange-400 transition-all transform hover:shadow-lg flex items-center justify-center gap-2"
+                  className="flex-1 px-4 py-3 bg-white border-2 rounded-xl font-bold transition-all transform hover:shadow-lg flex items-center justify-center gap-2"
+                  style={{ 
+                    borderColor: 'var(--border)',
+                    color: 'var(--primary-dark)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'var(--light-bg)';
+                    e.currentTarget.style.borderColor = 'var(--primary-light)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'white';
+                    e.currentTarget.style.borderColor = 'var(--border)';
+                  }}
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -660,13 +692,18 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="flex-1 px-4 py-3 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 text-white rounded-xl font-bold transition-all transform hover:shadow-2xl flex items-center justify-center gap-2 relative overflow-hidden group"
+                className="flex-1 px-4 py-3 text-white rounded-xl font-bold transition-all transform hover:shadow-2xl flex items-center justify-center gap-2 relative overflow-hidden group"
+                style={{
+                  background: 'linear-gradient(to right, var(--primary-light), var(--accent), var(--primary-light))'
+                }}
               >
-                <span className="absolute inset-0 bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <span 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                  style={{ background: 'linear-gradient(to right, var(--primary-dark), var(--accent), var(--primary-dark))' }}
+                />
                 <span className="relative flex items-center gap-2">
                   {isReview ? (
-                    <>                      إرسال
-                    </>
+                    <>إرسال</>
                   ) : (
                     <>
                       {currentStep === TOTAL_STEPS ? 'انهاء' : 'التالي'}

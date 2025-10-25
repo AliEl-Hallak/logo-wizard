@@ -15,13 +15,15 @@ export default function SuccessPage() {
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 0.2 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="fixed top-20 right-10 w-64 h-64 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
+        style={{ backgroundColor: 'var(--primary-light)' }}
+        className="fixed top-20 right-10 w-64 h-64 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
       />
       <motion.div 
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 0.2 }}
         transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-        className="fixed bottom-20 left-10 w-72 h-72 bg-amber-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
+        style={{ backgroundColor: 'var(--accent)' }}
+        className="fixed bottom-20 left-10 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
       />
 
       {/* Fullscreen confetti - plays once; always on top, mobile too */}
@@ -58,7 +60,11 @@ export default function SuccessPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-3xl sm:text-4xl font-black mb-3 bg-gradient-to-r from-orange-600 via-amber-500 to-orange-600 bg-clip-text text-transparent"
+            className="text-3xl sm:text-4xl font-black mb-3 bg-clip-text text-transparent"
+            style={{
+              backgroundImage: 'linear-gradient(to right, var(--primary-dark), var(--accent), var(--primary-dark))',
+              WebkitBackgroundClip: 'text'
+            }}
           >
             تم استلام طلبك بنجاح
           </motion.h1>
@@ -66,7 +72,8 @@ export default function SuccessPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="text-base sm:text-lg text-gray-700 font-medium max-w-2xl mx-auto mb-6"
+            className="text-base sm:text-lg font-medium max-w-2xl mx-auto mb-6"
+            style={{ color: 'var(--text-dark)' }}
           >
             شكراً لوقتك! سنراجع معلوماتك ونتواصل معك قريباً للخطوات التالية.
           </motion.p>
@@ -81,7 +88,10 @@ export default function SuccessPage() {
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-5 py-3 rounded-xl font-bold text-white bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 shadow-lg hover:shadow-xl transition-all cursor-pointer"
+                className="px-5 py-3 rounded-xl font-bold text-white shadow-lg hover:shadow-xl transition-all cursor-pointer"
+                style={{
+                  background: 'linear-gradient(to right, var(--primary-light), var(--accent), var(--primary-light))'
+                }}
               >
                 بدء نموذج جديد
               </motion.div>

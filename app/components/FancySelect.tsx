@@ -112,14 +112,16 @@ export default function FancySelect({
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}
           onKeyDown={handleKeyDown}
-          className={`w-full ${icon ? 'pr-4 pl-12' : 'px-4'} ${open || hasValue ? 'pt-6 pb-2' : 'py-3'} text-base border-2 rounded-2xl transition-all duration-300 text-right cursor-pointer
-            ${open ? 'border-orange-400 shadow-xl shadow-orange-200/50 bg-white' : 'border-gray-200 hover:border-orange-300 bg-white/80'}
-            backdrop-blur-sm focus:outline-none flex items-center justify-between`}
+          className={`w-full ${icon ? 'pr-4 pl-12' : 'px-4'} ${open || hasValue ? 'pt-6 pb-2' : 'py-3'} text-base border-2 rounded-2xl transition-all duration-300 text-right cursor-pointer backdrop-blur-sm focus:outline-none flex items-center justify-between ${open ? 'shadow-xl' : ''}`}
+          style={{
+            borderColor: open ? 'var(--primary-light)' : 'var(--border)',
+            backgroundColor: 'var(--white)'
+          }}
         >
           <span className={`truncate flex-1 text-right ${hasValue ? '' : 'opacity-0'}`}>
             {selectedLabel}
           </span>
-          <span className={`ml-2 transition-all duration-300 ${open || hasValue ? 'text-orange-500' : 'text-gray-400'}`}>
+          <span className={`ml-2 transition-all duration-300`} style={{ color: open || hasValue ? 'var(--primary)' : 'var(--text-light)' }}>
             <svg className={`w-5 h-5 transition-transform ${open ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
@@ -130,21 +132,22 @@ export default function FancySelect({
         <label 
           className={`absolute right-4 transition-all duration-300 pointer-events-none text-right
             ${open || hasValue 
-              ? 'top-2 text-[10px] sm:text-xs font-bold text-orange-500' 
-              : 'top-1/2 -translate-y-1/2 text-sm sm:text-base font-medium text-gray-500'
+              ? 'top-2 text-[10px] sm:text-xs font-bold' 
+              : 'top-1/2 -translate-y-1/2 text-sm sm:text-base font-medium'
             }
             ${icon && !open && !hasValue ? 'pr-8' : ''}
           `}
+          style={{ color: open || hasValue ? 'var(--primary)' : 'var(--text-light)' }}
         >
           {label}
-          {required && <span className="text-orange-500 mr-1">*</span>}
+          {required && <span className="mr-1" style={{ color: 'var(--primary)' }}>*</span>}
         </label>
 
         {/* Icon */}
         {icon && (
-          <div className={`absolute left-4 top-1/2 -translate-y-1/2 transition-all duration-300 pointer-events-none
-            ${open || hasValue ? 'text-orange-500' : 'text-gray-400'}
-          `}>
+          <div className={`absolute left-4 top-1/2 -translate-y-1/2 transition-all duration-300 pointer-events-none`}
+            style={{ color: open || hasValue ? 'var(--primary)' : 'var(--text-light)' }}
+          >
             {icon}
           </div>
         )}
@@ -154,7 +157,8 @@ export default function FancySelect({
           <>
             {/* Backdrop */}
             <div
-              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 animate-[fadeIn_0.2s_ease]"
+              className="fixed inset-0 backdrop-blur-sm z-40 animate-[fadeIn_0.2s_ease]"
+              style={{ background: 'var(--backdrop)' }}
               onClick={() => setOpen(false)}
             />
             {/* Modal Menu centered to viewport */}
@@ -164,9 +168,9 @@ export default function FancySelect({
               aria-modal="true"
               dir="rtl"
             >
-              <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border-2 border-orange-200">
+              <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border-2" style={{ borderColor: 'var(--border)' }}>
                 {/* Header */}
-                <div className="bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 px-4 py-3 sm:px-6 sm:py-4 flex items-center justify-between">
+                <div className="px-4 py-3 sm:px-6 sm:py-4 flex items-center justify-between" style={{ backgroundImage: 'linear-gradient(90deg, var(--primary), var(--accent), var(--primary-dark))' }}>
                   <h3 className="text-white font-bold text-sm sm:text-base md:text-lg">{label}</h3>
                   <button
                     type="button"
@@ -194,16 +198,16 @@ export default function FancySelect({
                         onMouseEnter={() => setHighlight(i)}
                         onMouseDown={(e) => e.preventDefault()}
                         onClick={() => commitValue(o)}
-                        className={`flex items-center gap-2 sm:gap-3 px-3 py-3 sm:px-4 sm:py-3.5 rounded-xl sm:rounded-2xl cursor-pointer select-none transition-all duration-200 mb-1.5 sm:mb-2 last:mb-0
-                          ${active
-                            ? 'bg-gradient-to-r from-orange-100 via-amber-100 to-orange-100 text-orange-700 font-bold shadow-md scale-105 border-2 border-orange-300'
-                            : hovered
-                              ? 'bg-orange-50 scale-[1.02]'
-                              : 'hover:bg-orange-50/50 border-2 border-transparent'
-                          }`}
+                        className={`flex items-center gap-2 sm:gap-3 px-3 py-3 sm:px-4 sm:py-3.5 rounded-xl sm:rounded-2xl cursor-pointer select-none transition-all duration-200 mb-1.5 sm:mb-2 last:mb-0 ${active ? 'scale-105 shadow-md' : hovered ? 'scale-[1.02]' : ''}`}
+                        style={{
+                          background: active ? 'linear-gradient(90deg, var(--light-bg), var(--border), var(--light-bg))' : undefined,
+                          color: active ? 'var(--primary-dark)' : undefined,
+                          border: '2px solid',
+                          borderColor: active ? 'var(--primary-light)' : 'transparent'
+                        }}
                       >
                         {active && (
-                          <div className="bg-orange-500 rounded-full p-0.5 sm:p-1 flex-shrink-0">
+                          <div className="rounded-full p-0.5 sm:p-1 flex-shrink-0" style={{ backgroundColor: 'var(--primary)' }}>
                             <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                             </svg>

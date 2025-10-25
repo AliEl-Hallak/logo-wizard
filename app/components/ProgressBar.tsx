@@ -38,15 +38,18 @@ export default function ProgressBar({ currentStep, totalSteps, isReview = false 
                   repeat: !isReview && index + 1 === currentStep ? Infinity : 0,
                   ease: "easeInOut"
                 }}
-                className={`w-11 h-11 rounded-full flex items-center justify-center text-base font-bold transition-all duration-500 ${
-                  isReview || index + 1 <= currentStep
-                    ? 'bg-gradient-to-br from-orange-500 via-amber-500 to-orange-600 text-white shadow-lg shadow-orange-500/50 ring-4 ring-orange-200'
-                    : 'bg-white text-gray-400 shadow-md border-2 border-gray-200'
-                } ${
-                  !isReview && index + 1 === currentStep
-                    ? 'ring-orange-300'
-                    : ''
-                }`}
+                className={`w-11 h-11 rounded-full flex items-center justify-center text-base font-bold transition-all duration-500`}
+                style={{
+                  background: (isReview || index + 1 <= currentStep)
+                    ? 'linear-gradient(135deg, var(--primary), var(--accent), var(--primary-dark))'
+                    : 'var(--white)',
+                  color: (isReview || index + 1 <= currentStep) ? 'var(--white)' : 'var(--text-light)',
+                  boxShadow: (isReview || index + 1 <= currentStep)
+                    ? '0 4px 8px var(--shadow), 0 8px 16px var(--shadow), 0 0 0 3px var(--shadow)'
+                    : '0 2px 4px var(--shadow), 0 4px 8px var(--shadow)',
+                  border: (isReview || index + 1 <= currentStep) ? undefined : '2px solid var(--border)',
+                  transform: (isReview || index + 1 <= currentStep) ? 'translateY(-2px)' : 'translateY(0)'
+                }}
               >
                 {isReview || index + 1 < currentStep ? (
                   <motion.svg 
@@ -69,7 +72,7 @@ export default function ProgressBar({ currentStep, totalSteps, isReview = false 
       </div>
       
       {/* Modern Slider */}
-      <div className="relative w-full bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 rounded-full h-4 overflow-hidden shadow-inner border border-gray-300">
+  <div className="relative w-full rounded-full h-4 overflow-hidden shadow-inner border" style={{ background: 'linear-gradient(90deg, var(--light-bg), var(--border), var(--light-bg))', borderColor: 'var(--border)' }}>
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -82,8 +85,8 @@ export default function ProgressBar({ currentStep, totalSteps, isReview = false 
           className="absolute top-0 right-0 h-full rounded-full transition-all duration-700 ease-out transform"
           style={{ 
             width: `${progress}%`,
-            background: 'linear-gradient(270deg, #ff6b00 0%, #ff8c38 30%, #ffa556 60%, #ffb366 100%)',
-            boxShadow: '0 0 25px rgba(255, 107, 0, 0.6), inset 0 1px 2px rgba(255,255,255,0.3)'
+            background: 'linear-gradient(270deg, var(--primary) 0%, var(--accent) 50%, var(--primary-dark) 100%)',
+            boxShadow: '0 0 25px var(--shadow), inset 0 1px 2px rgba(255,255,255,0.3)'
           }}
         >
           {/* Animated shine effect */}
@@ -102,8 +105,8 @@ export default function ProgressBar({ currentStep, totalSteps, isReview = false 
       <div className="mt-4 flex items-center justify-between gap-2 md:gap-3 px-1 md:px-2">
         {/* Left side - Motivational message */}
         {!isReview ? (
-          <div className="flex items-center gap-1.5 md:gap-2 bg-gradient-to-r from-orange-50 to-amber-50 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border border-orange-200 flex-1 justify-center">
-            <span className="text-xs md:text-sm font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent whitespace-nowrap overflow-hidden text-ellipsis">
+          <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border flex-1 justify-center" style={{ background: 'var(--light-bg)', borderColor: 'var(--border)' }}>
+            <span className="text-xs md:text-sm font-bold bg-clip-text text-transparent whitespace-nowrap overflow-hidden text-ellipsis" style={{ backgroundImage: 'linear-gradient(90deg, var(--primary-dark), var(--accent))' }}>
               {currentStep === totalSteps ? (
                 '🎉 خطوة أخيرة'
               ) : (
@@ -112,19 +115,19 @@ export default function ProgressBar({ currentStep, totalSteps, isReview = false 
             </span>
           </div>
         ) : (
-        <div className="flex items-center gap-1.5 md:gap-2 bg-gradient-to-r from-orange-50 to-amber-50 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border border-orange-200 flex-1 justify-center">
-          <span className="text-xs md:text-sm font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent whitespace-nowrap">
+        <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border flex-1 justify-center" style={{ background: ' var(--light-bg), var(--border)', borderColor: 'var(--border)' }}>
+          <span className="text-xs md:text-sm font-bold bg-clip-text text-transparent whitespace-nowrap" style={{ backgroundImage: 'linear-gradient(90deg, var(--primary-dark), var(--accent))' }}>
                راجع وأرسل
             </span>
           </div>
         )}
 
         {/* Right side - Step info */}
-        <div className="flex items-center gap-1.5 md:gap-2 bg-gradient-to-r from-orange-50 to-amber-50 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border border-orange-200 flex-1 justify-center">
-          <svg className="w-4 h-4 md:w-5 md:h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+        <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border flex-1 justify-center" style={{ background: 'var(--light-bg)', borderColor: 'var(--border)' }}>
+          <svg className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" style={{ color: 'var(--primary)' }} fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
           </svg>
-          <span className="text-xs md:text-sm font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent whitespace-nowrap">
+          <span className="text-xs md:text-sm font-bold bg-clip-text text-transparent whitespace-nowrap" style={{ backgroundImage: 'linear-gradient(90deg, var(--primary-dark), var(--accent))' }}>
             {isReview ? ' مراجعة ' : `${currentStep}/${totalSteps}`}
           </span>
         </div>

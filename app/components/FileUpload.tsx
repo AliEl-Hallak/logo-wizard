@@ -74,16 +74,23 @@ export default function FileUpload({
         onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
         onDragLeave={() => setIsDragging(false)}
         onDrop={handleDrop}
-        className={`relative border-2 border-dashed rounded-xl p-4 sm:p-6 transition-all duration-300 cursor-pointer group overflow-hidden
-          ${isDragging 
-            ? 'border-orange-500 bg-gradient-to-br from-orange-50 to-amber-50 scale-[1.02] shadow-xl' 
-            : fileName 
-              ? 'border-orange-400 bg-gradient-to-br from-orange-50 to-amber-50 shadow-md' 
-              : 'border-gray-300 bg-white/80 hover:border-orange-400 hover:bg-orange-50/30 hover:shadow-lg'
-          }`}
+        className={`relative border-2 border-dashed rounded-xl p-4 sm:p-6 transition-all duration-300 cursor-pointer group overflow-hidden ${
+          isDragging ? 'scale-[1.02] shadow-xl' : fileName ? 'shadow-md' : 'hover:shadow-lg'
+        }`}
+        style={{
+          borderColor: isDragging
+            ? 'var(--primary)'
+            : fileName
+            ? 'var(--primary-light)'
+            : 'var(--border)',
+          background: 'linear-gradient(135deg, var(--white), var(--light-bg))',
+        }}
       >
         {/* Animated background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-100 via-amber-50 to-orange-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          style={{ background: 'linear-gradient(135deg, var(--light-bg), var(--border))' }}
+        />
         
         <input
           id={name}
@@ -105,14 +112,14 @@ export default function FileUpload({
                  fileName.match(/\.(pdf)$/i) ? '📄' : '📁'}
               </div>
               <div className="text-center space-y-1.5">
-                <p className="text-sm sm:text-base font-bold text-orange-700 break-all px-2">
+                <p className="text-sm sm:text-base font-bold break-all px-2" style={{ color: 'var(--primary-dark)' }}>
                   {fileName}
                 </p>
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-orange-100 rounded-full">
-                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full" style={{ backgroundColor: 'var(--border)' }}>
+                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color: 'var(--primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
-                  <p className="text-xs sm:text-sm text-orange-700 font-bold">
+                  <p className="text-xs sm:text-sm font-bold" style={{ color: 'var(--primary-dark)' }}>
                     {fileSize}
                   </p>
                 </div>
@@ -124,7 +131,8 @@ export default function FileUpload({
                   e.stopPropagation();
                   clearFile();
                 }}
-                className="pointer-events-auto mt-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg text-xs sm:text-sm font-bold hover:from-red-600 hover:to-red-700 transition-all hover:scale-105 shadow-md flex items-center gap-1.5 z-20"
+                className="pointer-events-auto mt-2 px-3 py-1.5 sm:px-4 sm:py-2 text-white rounded-lg text-xs sm:text-sm font-bold transition-all hover:scale-105 shadow-md flex items-center gap-1.5 z-20"
+                style={{ backgroundColor: 'var(--danger)' }}
               >
                 <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -137,26 +145,26 @@ export default function FileUpload({
               {/* Label at top - above icon */}
               <div className="pointer-events-none mb-2">
                 <div className="flex flex-row-reverse items-center justify-center gap-1.5">
-                  <span className="text-xs sm:text-sm font-bold bg-gradient-to-r from-orange-600 via-amber-500 to-orange-600 bg-clip-text text-transparent">
+                  <span className="text-xs sm:text-sm font-bold bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(90deg, var(--primary-dark), var(--accent), var(--primary-dark))' }}>
                     {label}
                   </span>
-                  {required && <span className="text-orange-500 text-base sm:text-lg">*</span>}
+                  {required && <span className="text-base sm:text-lg" style={{ color: 'var(--primary)' }}>*</span>}
                 </div>
               </div>
               
               {/* Upload icon */}
               <div className="relative">
-                <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-orange-100 to-amber-100 flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <svg className="w-7 h-7 sm:w-10 sm:h-10 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-md" style={{ backgroundImage: 'linear-gradient(135deg, var(--light-bg), var(--border))' }}>
+                  <svg className="w-7 h-7 sm:w-10 sm:h-10" style={{ color: 'var(--primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                   </svg>
                 </div>
-                <div className="absolute -top-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-orange-500 to-amber-500 rounded-full flex items-center justify-center animate-pulse shadow-md">
+                <div className="absolute -top-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center animate-pulse shadow-md" style={{ backgroundImage: 'linear-gradient(135deg, var(--primary), var(--accent))' }}>
                   <span className="text-white text-base sm:text-xl font-bold">+</span>
                 </div>
               </div>
               <div className="text-center">
-                <p className="text-sm sm:text-base font-bold bg-gradient-to-r from-orange-600 via-amber-500 to-orange-600 bg-clip-text text-transparent px-2">
+                <p className="text-sm sm:text-base font-bold bg-clip-text text-transparent px-2" style={{ backgroundImage: 'linear-gradient(90deg, var(--primary-dark), var(--accent), var(--primary-dark))' }}>
                   {isDragging ? '🎯 أفلت الملف الآن!' : 'اسحب الملف أو اضغط'}
                 </p>
               </div>

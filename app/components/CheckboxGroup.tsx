@@ -24,8 +24,14 @@ export default function CheckboxGroup({
   return (
     <div className="mb-6 form-field">
       <label className="block text-xs sm:text-sm md:text-base font-bold mb-3 text-right flex items-center gap-2 justify-end">
-        {required && <span className="text-orange-500 text-base sm:text-lg md:text-xl">*</span>}
-        <span className="bg-gradient-to-r from-orange-600 via-amber-500 to-orange-600 bg-clip-text text-transparent">
+        {required && <span style={{ color: 'var(--primary)' }} className="text-base sm:text-lg md:text-xl">*</span>}
+        <span 
+          className="bg-clip-text text-transparent"
+          style={{ 
+            backgroundImage: 'linear-gradient(to right, var(--primary-dark), var(--accent), var(--primary-dark))',
+            WebkitBackgroundClip: 'text'
+          }}
+        >
           {label}
         </span>
       </label>
@@ -36,21 +42,26 @@ export default function CheckboxGroup({
           return (
             <label
               key={option}
-              className={`relative flex items-center gap-2.5 p-3 border-2 rounded-xl cursor-pointer transition-all duration-300 transform hover:scale-[1.01] group overflow-hidden
-                ${isChecked 
-                  ? 'border-orange-400 bg-gradient-to-br from-orange-100 via-amber-50 to-orange-50 shadow-md scale-[1.01]' 
-                  : 'border-gray-200 bg-white/80 hover:border-orange-300 hover:shadow-sm'
-                }
-                ${isFocused ? 'ring-2 ring-orange-300 ring-offset-1' : ''}
-              `}
+              className={`relative flex items-center gap-2.5 p-3 border-2 rounded-xl cursor-pointer transition-all duration-300 transform hover:scale-[1.01] group overflow-hidden ${isFocused ? 'ring-2 ring-offset-1' : ''}`}
+              style={{
+                animationDelay: `${index * 50}ms`,
+                borderColor: isChecked ? 'var(--primary-light)' : 'var(--border)',
+                backgroundColor: isChecked ? 'var(--light-bg)' : 'rgba(255, 255, 255, 0.8)',
+                ...(isFocused && { '--tw-ring-color': 'var(--primary)' })
+              }}
               dir="rtl"
-              style={{ animationDelay: `${index * 50}ms` }}
             >
               {/* Animated background on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br from-orange-50 to-amber-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isChecked ? 'opacity-0' : ''}`} />
+              <div 
+                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isChecked ? 'opacity-0' : ''}`}
+                style={{ background: 'linear-gradient(to bottom right, var(--light-bg), var(--border))' }}
+              />
               
               {/* Text */}
-              <span className={`relative text-sm sm:text-base flex-1 text-right font-medium transition-colors ${isChecked ? 'text-orange-700' : 'text-gray-700 group-hover:text-orange-600'}`}>
+              <span 
+                className="relative text-sm sm:text-base flex-1 text-right font-medium transition-colors"
+                style={{ color: isChecked ? 'var(--primary-dark)' : 'var(--text-dark)' }}
+              >
                 {option}
               </span>
               
@@ -66,11 +77,13 @@ export default function CheckboxGroup({
                   onBlur={() => setFocusedIndex(null)}
                   className="sr-only"
                 />
-                <div className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all duration-300
-                  ${isChecked 
-                    ? 'bg-gradient-to-br from-orange-500 to-amber-500 border-orange-500 shadow-sm' 
-                    : 'bg-white border-gray-300 group-hover:border-orange-400'
-                  }`}
+                <div 
+                  className="w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all duration-300"
+                  style={{
+                    background: isChecked ? 'linear-gradient(to bottom right, var(--primary-light), var(--accent))' : 'var(--white)',
+                    borderColor: isChecked ? 'var(--primary)' : 'var(--border)',
+                    boxShadow: isChecked ? '0 2px 4px rgba(0,0,0,0.1)' : 'none'
+                  }}
                 >
                   {/* Checkmark Icon */}
                   <svg 

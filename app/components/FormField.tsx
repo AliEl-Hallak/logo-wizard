@@ -30,10 +30,11 @@ export default function FormField({
 
   const baseClasses = `w-full ${icon ? 'pr-4 pl-12' : 'px-4'} ${isFocused || hasValue ? 'pt-6 pb-2' : 'py-3'} text-base border-2 rounded-2xl transition-all duration-300 text-right
     ${isFocused 
-      ? 'border-orange-400 shadow-xl shadow-orange-200/50 bg-white' 
-      : 'border-gray-200 hover:border-orange-300 bg-white/80'
+      ? 'bg-white' 
+      : 'hover:bg-white/80'
     }
-    backdrop-blur-sm focus:outline-none`;
+    backdrop-blur-sm focus:outline-none`
+    .concat(isFocused ? ' border-[var(--primary-light)] shadow-[0_8px_16px_var(--shadow)]' : ' border-[var(--border)] hover:border-[var(--primary)]');
 
   return (
     <div className="relative mb-5">
@@ -73,22 +74,23 @@ export default function FormField({
           htmlFor={name} 
           className={`absolute right-4 transition-all duration-300 pointer-events-none text-right
             ${isFocused || hasValue 
-              ? 'top-2 text-[10px] sm:text-xs font-bold text-orange-500' 
-              : 'top-1/2 -translate-y-1/2 text-sm sm:text-base font-medium text-gray-500'
+              ? 'top-2 text-[10px] sm:text-xs font-bold' 
+              : 'top-1/2 -translate-y-1/2 text-sm sm:text-base font-medium'
             }
             ${icon && !isFocused && !hasValue ? 'pr-8' : ''}
           `}
+          style={{ color: isFocused || hasValue ? 'var(--primary)' : 'var(--text-light)' }}
         >
           {label}
-          {required && <span className="text-orange-500 mr-1">*</span>}
+          {required && <span style={{ color: 'var(--primary)' }} className="mr-1">*</span>}
         </label>
         
         {/* Icon */}
         {icon && (
-          <div className={`absolute left-4 transition-all duration-300 pointer-events-none
-            ${isFocused || hasValue ? 'text-orange-500' : 'text-gray-400'}
-            ${type === 'textarea' ? 'top-3' : 'top-1/2 -translate-y-1/2'}
-          `}>
+          <div 
+            className={`absolute left-4 transition-all duration-300 pointer-events-none ${type === 'textarea' ? 'top-3' : 'top-1/2 -translate-y-1/2'}`}
+            style={{ color: isFocused || hasValue ? 'var(--primary)' : 'var(--text-light)' }}
+          >
             {icon}
           </div>
         )}
