@@ -84,7 +84,7 @@ export default function SuccessPage() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-3 justify-center"
           >
-            <Link href="/">
+            <Link href="/logo-wizard"  rel="noopener noreferrer">
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}

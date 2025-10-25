@@ -120,7 +120,7 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
   return (
     <motion.div className="space-y-5" variants={containerVariants} initial="hidden" animate="visible">
       {/* معلومات العميل */}
-      <SummaryCard title="معلومات العميل" icon={Icons.user}>
+      <SummaryCard title="بيانات التواصل" icon={Icons.user}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <DataRow label="الاسم الكامل" value={data.fullName} />
           <DataRow label="البريد الإلكتروني" value={data.email} />

@@ -9,9 +9,14 @@ const tajawal = Tajawal({
   display: 'swap',
 });
 
+
 export const metadata: Metadata = {
-  title: "استبيان تصميم الشعار | Logo Design Survey",
-  description: "استبيان احترافي لجمع متطلبات تصميم الشعارات من العملاء",
+  title: "Loay Designs | تصميم شعارات وهوية بصرية احترافية",
+  description:
+    "Loay Designs — استوديو تصميم متخصص في الشعارات والهويات البصرية الفاخرة. نبتكر تصاميم بسيطة وأنيقة تعكس هوية علامتك التجارية بروح عصرية وإبداعية.",
+  icons: {
+    icon: "/logo2.png", // logo dosyanın yolu
+  },
 };
 
 export default function RootLayout({
