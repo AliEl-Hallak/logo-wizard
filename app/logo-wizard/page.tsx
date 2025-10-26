@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+import { uploadToImgBB } from '../utils/uploadImage';
 import ProgressBar from '../components/ProgressBar';
 import FormField from '../components/FormField';
 import SelectField from '../components/SelectField';
@@ -31,6 +33,8 @@ export default function LogoWizardPage() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [isReview, setIsReview] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
   const initialForm: Partial<SurveyData> = {
     fullName: '',
     email: '',
@@ -102,17 +106,84 @@ export default function LogoWizardPage() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isReview) {
-      // TODO: إرسال البيانات عبر EmailJS أو API
-      // Reset form and go to success page
+    if (!isReview) {
+      nextStep();
+      return;
+    }
+
+    // Review aşamasında: EmailJS ile gönder
+const SERVICE_ID = "service_8x81kdb";
+const TEMPLATE_ID = "template_664qe99";
+const PUBLIC_KEY = "Nhda0CqwRD7smCWe8";
+
+
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      setSendError('EmailJS yapılandırması eksik. Lütfen .env.local dosyasını doldurun.');
+      return;
+    }
+
+    setSending(true);
+    setSendError(null);
+
+    // Upload files to ImgBB if they exist
+    let inspirationLogosUrl = '';
+    let oldLogoFileUrl = '';
+
+    if (formData.inspirationLogos && formData.inspirationLogos instanceof File) {
+      const uploadedUrl = await uploadToImgBB(formData.inspirationLogos);
+      if (uploadedUrl) inspirationLogosUrl = uploadedUrl;
+    }
+
+    if (formData.oldLogoFile && formData.oldLogoFile instanceof File) {
+      const uploadedUrl = await uploadToImgBB(formData.oldLogoFile);
+      if (uploadedUrl) oldLogoFileUrl = uploadedUrl;
+    }
+
+    const templateParams: Record<string, any> = {
+      fullName: formData.fullName || '',
+      email: formData.email || '',
+      phone: formData.phone || '',
+      logoName: formData.logoName || '',
+      logoType: formData.logoType || '',
+      logoLanguage: formData.logoLanguage || '',
+      servicesOrProducts: formData.servicesOrProducts || '',
+      aboutCompany: formData.aboutCompany || '',
+      whyNeedLogo: formData.whyNeedLogo || '',
+      competitors: formData.competitors || '',
+      targetLanguage: formData.targetLanguage || '',
+      targetAgeGroup: formData.targetAgeGroup || '',
+      desiredImpression: formData.desiredImpression || '',
+      preferredStyle: formData.preferredStyle || '',
+      logoUsage: (formData.logoUsage || []).join(', '),
+      colorRestrictions: formData.colorRestrictions || '',
+      oldLogoDescription: formData.oldLogoDescription || '',
+      keepOldStyle: formData.keepOldStyle || '',
+      deadline: formData.deadline || '',
+      additionalNotes: (formData as any).additionalNotes || '',
+      // Uploaded file URLs
+      inspirationLogosUrl: inspirationLogosUrl || 'لا يوجد',
+      oldLogoFileUrl: oldLogoFileUrl || 'لا يوجد',
+      // EmailJS yaygın alan adları
+      reply_to: formData.email || '',
+      from_name: formData.fullName || 'Logo Wizard',
+      subject: `Yeni Logo Anketi • ${formData.logoName || formData.fullName || ''}`,
+      submitted_at: new Date().toLocaleString(),
+    };
+
+    try {
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+      // Başarılı gönderim: formu sıfırla ve başarı sayfasına git
       setFormData(initialForm);
       setCurrentStep(1);
       setIsReview(false);
       router.push('/success');
-    } else {
-      nextStep();
+    } catch (err: any) {
+      console.error('EmailJS send error:', err);
+      setSendError('Gönderim sırasında bir hata oluştu. Lütfen tekrar deneyin.');
+    } finally {
+      setSending(false);
     }
   };
 
@@ -123,33 +194,24 @@ export default function LogoWizardPage() {
   };
 
   return (
+    
     <div className="min-h-screen relative overflow-hidden py-8 px-4 sm:px-6 lg:px-8" dir="rtl">
-      {/* Animated Background */}
-      <div className="fixed inset-0 -z-10 animated-bg opacity-30" />
-      
-      {/* Floating Circles with Motion */}
-      <motion.div 
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.2 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        style={{ backgroundColor: 'var(--primary-light)' }}
-        className="fixed top-20 right-10 w-64 h-64 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
-      />
-      <motion.div 
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.2 }}
-        transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-        style={{ backgroundColor: 'var(--accent)' }}
-        className="fixed bottom-20 left-10 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
-      />
-      <motion.div 
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.2 }}
-        transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-        style={{ backgroundColor: 'var(--accent)' }}
-        className="fixed top-1/2 left-1/2 w-80 h-80 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
-      />
-      
+
+{/* Arka plan gradient */}
+<div className="absolute inset-0 animated-bg opacity-20 pointer-events-none"></div>
+
+{/* Üst ışık */}
+<div
+  className="absolute -top-[10vh] left-1/2 -translate-x-1/2 w-[140vw] h-[60vh] md:w-[90%] md:h-[90%] blur-3xl opacity-20 pointer-events-none"
+  style={{ background: "radial-gradient(circle at 50% 30%, var(--primary-light), transparent 70%)" }}
+/>
+
+{/* Alt ışık */}
+<div
+  className="absolute -bottom-[10vh] left-1/2 -translate-x-1/2 w-[140vw] h-[60vh] md:w-[80%] md:h-[70%] blur-3xl opacity-15 pointer-events-none"
+  style={{ background: "radial-gradient(circle at 50% 80%, var(--accent), transparent 70%)" }}
+/>
+
       <div className="max-w-4xl mx-auto relative">
         {/* Header */}
         <motion.div 
@@ -163,7 +225,7 @@ export default function LogoWizardPage() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-3xl sm:text-6xl font-black mb-4 bg-clip-text text-transparent"
+            className="text-3xl sm:text-6xl font-black p-2 mb-4 bg-clip-text text-transparent"
             style={{
               backgroundImage: 'linear-gradient(to right, var(--primary-dark), var(--accent), var(--primary-light))',
               WebkitBackgroundClip: 'text'
@@ -664,6 +726,12 @@ export default function LogoWizardPage() {
               className="flex flex-row gap-3 mt-8 pt-6 border-t-2"
               style={{ borderColor: 'var(--light-bg)' }}
             >
+              {/* Error message */}
+              {sendError && (
+                <div className="w-full text-center text-sm text-[var(--danger)] font-medium">
+                  {sendError}
+                </div>
+              )}
               {(currentStep > 1 || isReview) && (
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -694,6 +762,7 @@ export default function LogoWizardPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
+                disabled={sending}
                 className="flex-1 px-4 py-3 text-white rounded-xl font-bold transition-all transform hover:shadow-2xl flex items-center justify-center gap-2 relative overflow-hidden group"
                 style={{
                   background: 'linear-gradient(to right, var(--primary-light), var(--accent), var(--primary-light))'
@@ -705,7 +774,7 @@ export default function LogoWizardPage() {
                 />
                 <span className="relative flex items-center gap-2">
                   {isReview ? (
-                    <>إرسال</>
+                    <>{sending ? 'جارٍ الإرسال...' : 'إرسال'}</>
                   ) : (
                     <>
                       {currentStep === TOTAL_STEPS ? 'انهاء' : 'التالي'}

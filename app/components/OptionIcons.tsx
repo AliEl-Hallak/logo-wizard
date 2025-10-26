@@ -2,28 +2,28 @@
 export const OptionIcons = {
   // Logo type icons with maximum size and clarity
   'حرفي (Lettermark)': (
-    <img src="/1.png" alt="Lettermark" className="w-20 h-20 object-contain" />
+    <img src="/6.png" alt="Lettermark" className="w-20 h-20 object-contain" />
   ),
   'الحرف الأول (Monogram)': (
-    <img src="/2.png" alt="Monogram" className="w-20 h-20 object-contain" />
+    <img src="/1.png" alt="Monogram" className="w-20 h-20 object-contain" />
   ),
   'نصي (Wordmark)': (
-    <img src="/3.png" alt="Wordmark" className="w-20 h-20 object-contain" />
+    <img src="/5.png" alt="Wordmark" className="w-20 h-20 object-contain" />
   ),
   'أيقوني رمزي (Pictorial)': (
-    <img src="/4.png" alt="Pictorial" className="w-20 h-20 object-contain" />
+    <img src="/2.png" alt="Pictorial" className="w-20 h-20 object-contain" />
   ),
   'مزيج (Combination)': (
-    <img src="/5.png" alt="Combination" className="w-20 h-20 object-contain" />
+    <img src="/4.png" alt="Combination" className="w-20 h-20 object-contain" />
   ),
   'علامة (Emblem)': (
-    <img src="/6.png" alt="Emblem" className="w-20 h-20 object-contain" />
+    <img src="/8.png" alt="Emblem" className="w-20 h-20 object-contain" />
   ),
   'كاليغرافي (Calligraphic)': (
-    <img src="/7.png" alt="Calligraphic" className="w-20 h-20 object-contain" />
+    <img src="/3.png" alt="Calligraphic" className="w-20 h-20 object-contain" />
   ),
   'أيقوني تجريدي (Abstract)': (
-    <img src="/8.png" alt="Abstract" className="w-20 h-20 object-contain" />
+    <img src="/7.png" alt="Abstract" className="w-20 h-20 object-contain" />
   ),
 
   // Language icons - Circle badges with text

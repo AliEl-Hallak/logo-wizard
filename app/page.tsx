@@ -83,7 +83,7 @@ export default function Hero() {
                 width={240}
                 height={240}
                 className="md:w-[300px] md:h-[300px] rounded-full border-4 border-[var(--white)]
-                          shadow-[0_0_50px_rgba(255,107,0,0.25)] object-cover"
+            shadow-[0_0_50px_var(--shadow)] object-cover"
               />
             </motion.div>
           </motion.div>
@@ -125,7 +125,7 @@ export default function Hero() {
             className="max-w-3xl mt-4 md:mt-6 text-[clamp(15px,1.3vw,22px)] leading-relaxed text-[var(--text-light)]"
           >
             أبتكر هويات وشعارات تجمع بين الفخامة والبساطة بأسلوب يعكس هوية علامتك
-            التجارية بروحٍ عصرية وإبداعية.
+            التجارية بروحٍ عصرية وإبداعية
           </motion.p>
 
           {/* Butonlar */}
@@ -141,7 +141,7 @@ export default function Hero() {
     href="/logo-wizard"
     whileHover={{
       scale: 1.06,
-      boxShadow: "0 0 40px rgba(255,107,0,0.45)",
+    boxShadow: "0 0 40px color-mix(in srgb, var(--primary) 45%, transparent)",
     }}
     whileTap={{ scale: 0.97 }}
     transition={{ type: "spring", stiffness: 220, damping: 14 }}

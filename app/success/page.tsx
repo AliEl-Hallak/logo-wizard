@@ -60,7 +60,7 @@ export default function SuccessPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-3xl sm:text-4xl font-black mb-3 bg-clip-text text-transparent"
+            className="text-3xl sm:text-4xl font-black p-3 mb-3 bg-clip-text text-transparent"
             style={{
               backgroundImage: 'linear-gradient(to right, var(--primary-dark), var(--accent), var(--primary-dark))',
               WebkitBackgroundClip: 'text'

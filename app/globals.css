@@ -35,8 +35,8 @@
   --white: #ffffff;
   
   /* ✨ Yardımcı Değerler */
-  --shadow: rgba(255, 107, 0, 0.18);
-  --backdrop: rgba(0, 0, 0, 0.4);
+  --shadow: color-mix(in srgb, var(--primary) 18%, transparent);
+  --backdrop: color-mix(in srgb, #000000 40%, transparent);
 }
 
 /* ============================================
@@ -137,7 +137,7 @@
     box-shadow: 0 0 20px var(--shadow);
   }
   50% {
-    box-shadow: 0 0 40px rgba(255, 107, 0, 0.6);
+    box-shadow: 0 0 40px color-mix(in srgb, var(--primary) 60%, transparent);
   }
 }
 
@@ -206,9 +206,9 @@ select {
 
 /* Glassmorphism effect */
 .glass {
-  background: rgba(255, 255, 255, 0.85);
+  background: color-mix(in srgb, var(--white) 85%, transparent);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid color-mix(in srgb, var(--white) 30%, transparent);
 }
 
 /* Form animations */
