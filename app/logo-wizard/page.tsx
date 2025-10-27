@@ -219,7 +219,7 @@ const PUBLIC_KEY = "Nhda0CqwRD7smCWe8";
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-8"
+          className="text-center mb-2"
         >
     
           <motion.h1 
@@ -249,7 +249,7 @@ className="glass rounded-3xl p-6 sm:p-8 lg:p-10 backdrop-blur-xl shadow-[0_8px_3
   }}      
     >
           {/* Section Title - Above Progress Bar */}
-          <div className="text-center mb-8 fade-in-up relative">
+          <div className="text-center mb-2 fade-in-up relative">
             <div className="flex items-center justify-center gap-4 md:gap-6">
               {/* Left decoration */}
               <div className="flex-1 max-w-[80px] md:max-w-[150px] flex items-center gap-1">
@@ -745,7 +745,7 @@ className="glass rounded-3xl p-6 sm:p-8 lg:p-10 backdrop-blur-xl shadow-[0_8px_3
                   onClick={prevStep}
                   className="flex-1 px-4 py-3 bg-white border-2 rounded-xl font-bold transition-all transform hover:shadow-lg flex items-center justify-center gap-2"
                   style={{ 
-                    borderColor: 'var(--border)',
+                    borderColor: 'var(--accent)',
                     color: 'var(--primary-dark)'
                   }}
                   onMouseEnter={(e) => {
@@ -754,7 +754,7 @@ className="glass rounded-3xl p-6 sm:p-8 lg:p-10 backdrop-blur-xl shadow-[0_8px_3
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = 'white';
-                    e.currentTarget.style.borderColor = 'var(--border)';
+                    e.currentTarget.style.borderColor = 'var(--accent)';
                   }}
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

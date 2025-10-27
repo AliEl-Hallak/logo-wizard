@@ -200,10 +200,10 @@ export default function FancySelect({
                         onClick={() => commitValue(o)}
                         className={`flex items-center gap-2 sm:gap-3 px-3 py-3 sm:px-4 sm:py-3.5 rounded-xl sm:rounded-2xl cursor-pointer select-none transition-all duration-200 mb-1.5 sm:mb-2 last:mb-0 ${active ? 'scale-105 shadow-md' : hovered ? 'scale-[1.02]' : ''}`}
                         style={{
-                          background: active ? 'linear-gradient(90deg, var(--light-bg), var(--border), var(--light-bg))' : undefined,
+                          background: active ? 'linear-gradient(90deg, var(--light-bg), var(--light-bg), var(--light-bg))' : undefined,
                           color: active ? 'var(--primary-dark)' : undefined,
                           border: '2px solid',
-                          borderColor: active ? 'var(--primary-light)' : 'transparent'
+                          borderColor: active ? 'var(--light-bg)' : 'transparent'
                         }}
                       >
                         {active && (

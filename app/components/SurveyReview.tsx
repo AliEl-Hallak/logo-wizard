@@ -57,12 +57,12 @@ function SummaryCard({ title, icon, children }: SummaryCardProps) {
       className="rounded-2xl p-5 shadow-lg border-2 hover:shadow-xl transition-all duration-300 hover:scale-[1.01] backdrop-blur-sm"
       style={{
         background: 'linear-gradient(135deg, var(--white), var(--light-bg))',
-        borderColor: 'var(--border)'
+        borderColor: 'var(--accent)'
       }}
     >
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-extrabold flex items-center gap-2 text-right" style={{ color: 'var(--text-dark)' }}>
-          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full" style={{ backgroundColor: 'var(--border)', color: 'var(--primary)' }}>
+          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full" style={{ backgroundColor: 'var(--accent)', color: 'var(--white)' }}>
             {icon}
           </span>
           <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(90deg, var(--primary-dark), var(--accent), var(--primary-light))' }}>
@@ -131,7 +131,7 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
           type="button"
           onClick={() => onEdit(1)}
           className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 font-bold transition-all"
-          style={{ borderColor: 'var(--border)', color: 'var(--primary-dark)' }}
+          style={{ borderColor: 'var(--accent)', color: 'var(--primary-dark)' }}
         >
           {Icons.pencil}
           <span>تعديل</span>
@@ -150,7 +150,7 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
           type="button"
           onClick={() => onEdit(2)}
           className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 font-bold transition-all"
-          style={{ borderColor: 'var(--border)', color: 'var(--primary-dark)' }}
+          style={{ borderColor: 'var(--accent)', color: 'var(--primary-dark)' }}
         >
           {Icons.pencil}
           <span>تعديل</span>
@@ -172,7 +172,7 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
           type="button"
           onClick={() => onEdit(3)}
           className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 font-bold transition-all"
-          style={{ borderColor: 'var(--border)', color: 'var(--primary-dark)' }}
+          style={{ borderColor: 'var(--accent)', color: 'var(--primary-dark)' }}
         >
           {Icons.pencil}
           <span>تعديل</span>
@@ -192,7 +192,7 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
           type="button"
           onClick={() => onEdit(4)}
           className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 font-bold transition-all"
-          style={{ borderColor: 'var(--border)', color: 'var(--primary-dark)' }}
+          style={{ borderColor: 'var(--accent)', color: 'var(--primary-dark)' }}
         >
           {Icons.pencil}
           <span>تعديل</span>
@@ -259,7 +259,7 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
           type="button"
           onClick={() => onEdit(5)}
           className="mt-3 inline-flex items-center gap-2 px-3 py-2 rounded-lg border-2 font-bold transition-all"
-          style={{ borderColor: 'var(--border)', color: 'var(--primary-dark)' }}
+          style={{ borderColor: 'var(--accent)', color: 'var(--primary-dark)' }}
         >
           {Icons.pencil}
           <span>تعديل</span>

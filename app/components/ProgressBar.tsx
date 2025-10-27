@@ -102,7 +102,7 @@ export default function ProgressBar({ currentStep, totalSteps, isReview = false 
       </div>
 
       {/* Info section below slider */}
-      <div className="mt-4 flex items-center justify-between gap-2 md:gap-3 ">
+      <div className="mt-4 flex items-center justify-between gap-2 md:gap-3 px-1 md:px-2">
         {/* Left side - Motivational message */}
         {!isReview ? (
           <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border flex-1 justify-center" style={{ background: 'var(--light-bg)', borderColor: 'var(--light-bg)' }}>
@@ -115,7 +115,7 @@ export default function ProgressBar({ currentStep, totalSteps, isReview = false 
             </span>
           </div>
         ) : (
-        <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border flex-1 justify-center" style={{borderColor: 'var(--border)' }}>
+        <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border flex-1 justify-center" style={{borderColor: 'var(--light-bg)' }}>
           <span className="text-xs md:text-sm font-bold bg-clip-text text-transparent whitespace-nowrap" style={{ backgroundImage: 'linear-gradient(90deg, var(--primary-dark), var(--accent))' }}>
                راجع وأرسل
             </span>
