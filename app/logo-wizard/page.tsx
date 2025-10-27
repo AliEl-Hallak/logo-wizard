@@ -195,7 +195,7 @@ const PUBLIC_KEY = "Nhda0CqwRD7smCWe8";
 
   return (
     
-    <div className="min-h-screen relative overflow-hidden py-8 px-4 sm:px-6 lg:px-8" dir="rtl">
+    <div className=" bg-[var(--light-bg)] min-h-screen relative overflow-hidden py-8 px-4 sm:px-6 lg:px-8" dir="rtl">
 
 {/* Arka plan gradient */}
 <div className="absolute inset-0 animated-bg opacity-20 pointer-events-none"></div>
@@ -241,8 +241,12 @@ const PUBLIC_KEY = "Nhda0CqwRD7smCWe8";
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-          className="glass rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-10 backdrop-blur-lg border-2 border-white/50"
-        >
+className="glass rounded-3xl p-6 sm:p-8 lg:p-10 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.1)]"
+  style={{
+    border: '2px solid #fed7aa', 
+    boxShadow: '0 8px 30px rgba(0,0,0,0.1)',
+  }}      
+    >
           {/* Section Title - Above Progress Bar */}
           <div className="text-center mb-8 fade-in-up relative">
             <div className="flex items-center justify-center gap-4 md:gap-6">
@@ -264,7 +268,7 @@ const PUBLIC_KEY = "Nhda0CqwRD7smCWe8";
                 </h2>
               ) : (
                 <h2 
-                  className="text-xl sm:text-2xl md:text-3xl font-black bg-clip-text text-transparent animate-gradient whitespace-nowrap px-2"
+                  className="text-xl sm:text-2xl md:text-3xl p-2 font-black bg-clip-text text-transparent animate-gradient whitespace-nowrap px-2"
                   style={{ 
                     backgroundImage: 'linear-gradient(to right, var(--primary-light), var(--accent), var(--primary-dark))',
                     WebkitBackgroundClip: 'text'
