@@ -4,39 +4,23 @@
    🎨 10 RENK SİSTEMİ - Minimalist & Temiz
    ============================================ */
 :root {
-  /* 1️⃣ Ana Turuncu */
-  --primary: #ff6b00;
-  
-  /* 2️⃣ Açık Turuncu */
-  --primary-light: #f97316;
-  
-  /* 3️⃣ Koyu Turuncu */
-  --primary-dark: #ea580c;
-  
-  /* 4️⃣ Accent (Amber/Altın) */
-  --accent: #f59e0b;
-  
-  /* 5️⃣ Çok Açık Arkaplan */
-  --light-bg: #fff7ed;
-  
-  /* 6️⃣ Border */
-  --border: #fed7aa;
-  
-  /* 7️⃣ Koyu Metin */
-  --text-dark: #1a1a1a;
-  
-  /* 8️⃣ Açık Metin */
-  --text-light: #6b7280;
-  
-  /* 9️⃣ Danger (Kırmızı) */
+
+  --primary: #1e3a8a;    
+  --accent: #1e3a8a;      
+  --background: #f1f5f9;   
+  --black: #1f2937;        
+  --white: #ffffff;     
+
+
+  --primary-light: #1e3a8a;
+  --primary-dark: #1e3a8a;
+  --light-bg: #f1f5f9;
+  --border: #cbd5e1;
+  --text-dark: #1f2937;
+  --text-light: #475569;
   --danger: #ef4444;
-  
-  /* 🔟 Beyaz */
-  --white: #ffffff;
-  
-  /* ✨ Yardımcı Değerler */
-  --shadow: color-mix(in srgb, var(--primary) 18%, transparent);
-  --backdrop: color-mix(in srgb, #000000 40%, transparent);
+  --shadow: #1e3a8a40;
+  --backdrop: #00000066;
 }
 
 /* ============================================

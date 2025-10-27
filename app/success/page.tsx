@@ -2,15 +2,14 @@
 
 import { motion } from 'framer-motion';
 import Lottie from "lottie-react";
-import iconAnimation from "@/public/Success.json";
-import confettiAnimation from "@/public/congratulation.json";
+import iconAnimation from "@/public/Success2.json";
+import confettiAnimation from "@/public/congratulation2.json";
 import Link from 'next/link';
 
 export default function SuccessPage() {
   return (
     <div className="min-h-[100dvh] relative overflow-hidden px-6 py-10 grid place-items-center lg:block lg:py-14" dir="rtl">
       {/* Animated Background */}
-      <div className="fixed inset-0 -z-10 animated-bg opacity-30" />
       <motion.div 
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 0.2 }}

@@ -195,22 +195,9 @@ const PUBLIC_KEY = "Nhda0CqwRD7smCWe8";
 
   return (
     
-    <div className="min-h-screen relative overflow-hidden py-8 px-4 sm:px-6 lg:px-8" dir="rtl">
+    <div className="bg-[var(--light-bg)]  min-h-screen relative overflow-hidden py-8 px-4 sm:px-6 lg:px-8" dir="rtl">
 
-{/* Arka plan gradient */}
-<div className="absolute inset-0 animated-bg opacity-20 pointer-events-none"></div>
 
-{/* Üst ışık */}
-<div
-  className="absolute -top-[10vh] left-1/2 -translate-x-1/2 w-[140vw] h-[60vh] md:w-[90%] md:h-[90%] blur-3xl opacity-20 pointer-events-none"
-  style={{ background: "radial-gradient(circle at 50% 30%, var(--primary-light), transparent 70%)" }}
-/>
-
-{/* Alt ışık */}
-<div
-  className="absolute -bottom-[10vh] left-1/2 -translate-x-1/2 w-[140vw] h-[60vh] md:w-[80%] md:h-[70%] blur-3xl opacity-15 pointer-events-none"
-  style={{ background: "radial-gradient(circle at 50% 80%, var(--accent), transparent 70%)" }}
-/>
 
       <div className="max-w-4xl mx-auto relative">
         {/* Header */}
@@ -264,7 +251,7 @@ const PUBLIC_KEY = "Nhda0CqwRD7smCWe8";
                 </h2>
               ) : (
                 <h2 
-                  className="text-xl sm:text-2xl md:text-3xl font-black bg-clip-text text-transparent animate-gradient whitespace-nowrap px-2"
+                  className="text-xl p-2 sm:text-2xl md:text-3xl font-black bg-clip-text text-transparent animate-gradient whitespace-nowrap px-2"
                   style={{ 
                     backgroundImage: 'linear-gradient(to right, var(--primary-light), var(--accent), var(--primary-dark))',
                     WebkitBackgroundClip: 'text'

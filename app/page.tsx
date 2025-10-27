@@ -11,20 +11,7 @@ export default function Hero() {
   className="relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-start bg-[var(--light-bg)] min-h-screen"
 >
 
-{/* Arka plan gradient */}
-<div className="absolute inset-0 animated-bg opacity-20 pointer-events-none"></div>
 
-{/* Üst ışık */}
-<div
-  className="absolute -top-[10vh] left-1/2 -translate-x-1/2 w-[140vw] h-[60vh] md:w-[90%] md:h-[90%] blur-3xl opacity-20 pointer-events-none"
-  style={{ background: "radial-gradient(circle at 50% 30%, var(--primary-light), transparent 70%)" }}
-/>
-
-{/* Alt ışık */}
-<div
-  className="absolute -bottom-[10vh] left-1/2 -translate-x-1/2 w-[140vw] h-[60vh] md:w-[80%] md:h-[70%] blur-3xl opacity-15 pointer-events-none"
-  style={{ background: "radial-gradient(circle at 50% 80%, var(--accent), transparent 70%)" }}
-/>
 
       {/* Düzen */}
 <div className="relative z-10 w-full max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-16 px-6 md:px-16 items-center">
@@ -43,7 +30,7 @@ export default function Hero() {
             className="relative z-20"
           >
             <Image
-              src="/logo2.png"
+              src="/newlogo.png"
               alt="Loay Designs Logo"
               width={140}
               height={70}
@@ -113,7 +100,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="mt-2 md:mt-4 text-[clamp(20px,2.5vw,36px)] font-semibold text-[var(--primary-dark)]"
+            className="mt-2 md:mt-4 text-[clamp(20px,2.5vw,36px)] font-semibold text-[var(--black)]"
           >
             تصميم شعارات وهوية بصرية راقية
           </motion.h2>

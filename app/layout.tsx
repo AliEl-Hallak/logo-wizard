@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     "Loay Designs — استوديو تصميم متخصص في الشعارات والهويات البصرية الفاخرة. نبتكر تصاميم بسيطة وأنيقة تعكس هوية علامتك التجارية بروح عصرية وإبداعية.",
   icons: {
-    icon: "/logo2.png", // logo dosyanın yolu
+    icon: "/newlogo2.png", // logo dosyanın yolu
   },
 };
 
