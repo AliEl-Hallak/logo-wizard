@@ -194,25 +194,26 @@ const PUBLIC_KEY = "Nhda0CqwRD7smCWe8";
   };
 
   return (
-    
-    <div className=" bg-[var(--light-bg)] min-h-screen relative overflow-hidden py-8 px-4 sm:px-6 lg:px-8" dir="rtl">
 
-{/* Arka plan gradient */}
+    <div className=" bg-[var(--light-bg)]  min-h-screen relative overflow-hidden py-8 px-4 sm:px-6 lg:px-8" dir="rtl">
+
 <div className="absolute inset-0 animated-bg opacity-20 pointer-events-none"></div>
-
-{/* Üst ışık */}
-<div
-  className="absolute -top-[10vh] left-1/2 -translate-x-1/2 w-[140vw] h-[60vh] md:w-[90%] md:h-[90%] blur-3xl opacity-20 pointer-events-none"
-  style={{ background: "radial-gradient(circle at 50% 30%, var(--primary-light), transparent 70%)" }}
-/>
-
-{/* Alt ışık */}
-<div
-  className="absolute -bottom-[10vh] left-1/2 -translate-x-1/2 w-[140vw] h-[60vh] md:w-[80%] md:h-[70%] blur-3xl opacity-15 pointer-events-none"
-  style={{ background: "radial-gradient(circle at 50% 80%, var(--accent), transparent 70%)" }}
-/>
-
-      <div className="max-w-4xl mx-auto relative">
+      <motion.div 
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 0.2 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        style={{ backgroundColor: 'var(--primary-light)' }}
+        className="fixed top-20 right-10 w-64 h-64 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
+      />
+      <motion.div 
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 0.2 }}
+        transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+        style={{ backgroundColor: 'var(--accent)' }}
+        className="fixed bottom-20 left-10 w-72 h-72 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" 
+      />
+      
+            <div className="max-w-4xl mx-auto relative">
         {/* Header */}
         <motion.div 
           initial={{ y: -50, opacity: 0 }}
@@ -243,7 +244,7 @@ const PUBLIC_KEY = "Nhda0CqwRD7smCWe8";
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
 className="glass rounded-3xl p-6 sm:p-8 lg:p-10 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.1)]"
   style={{
-    border: '2px solid #fed7aa', 
+    border: '1px solid #fff', 
     boxShadow: '0 8px 30px rgba(0,0,0,0.1)',
   }}      
     >

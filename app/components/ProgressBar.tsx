@@ -46,7 +46,7 @@ export default function ProgressBar({ currentStep, totalSteps, isReview = false 
                   color: (isReview || index + 1 <= currentStep) ? 'var(--white)' : 'var(--text-light)',
                   boxShadow: (isReview || index + 1 <= currentStep)
                     ? '0 4px 8px var(--shadow), 0 8px 16px var(--shadow), 0 0 0 3px var(--shadow)'
-                    : '0 2px 4px var(--shadow), 0 4px 8px var(--shadow)',
+                    : '0 2px 4px var(--border), 0 4px 8px var(--border)',
                   border: (isReview || index + 1 <= currentStep) ? undefined : '2px solid var(--border)',
                   transform: (isReview || index + 1 <= currentStep) ? 'translateY(-2px)' : 'translateY(0)'
                 }}
@@ -72,7 +72,7 @@ export default function ProgressBar({ currentStep, totalSteps, isReview = false 
       </div>
       
       {/* Modern Slider */}
-  <div className="relative w-full rounded-full h-4 overflow-hidden shadow-inner border" style={{ background: 'linear-gradient(90deg, var(--light-bg), var(--border), var(--light-bg))', borderColor: 'var(--border)' }}>
+  <div className="relative w-full rounded-full h-4 overflow-hidden shadow-inner border" style={{ background: 'linear-gradient(90deg, var(--border), var(--border), var(--border))', borderColor: 'var(--border)' }}>
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -102,10 +102,10 @@ export default function ProgressBar({ currentStep, totalSteps, isReview = false 
       </div>
 
       {/* Info section below slider */}
-      <div className="mt-4 flex items-center justify-between gap-2 md:gap-3 px-1 md:px-2">
+      <div className="mt-4 flex items-center justify-between gap-2 md:gap-3 ">
         {/* Left side - Motivational message */}
         {!isReview ? (
-          <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border flex-1 justify-center" style={{ background: 'var(--light-bg)', borderColor: 'var(--border)' }}>
+          <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border flex-1 justify-center" style={{ background: 'var(--light-bg)', borderColor: 'var(--light-bg)' }}>
             <span className="text-xs md:text-sm font-bold bg-clip-text text-transparent whitespace-nowrap overflow-hidden text-ellipsis" style={{ backgroundImage: 'linear-gradient(90deg, var(--primary-dark), var(--accent))' }}>
               {currentStep === totalSteps ? (
                 '🎉 خطوة أخيرة'
@@ -115,7 +115,7 @@ export default function ProgressBar({ currentStep, totalSteps, isReview = false 
             </span>
           </div>
         ) : (
-        <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border flex-1 justify-center" style={{ background: ' var(--light-bg), var(--border)', borderColor: 'var(--border)' }}>
+        <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border flex-1 justify-center" style={{borderColor: 'var(--border)' }}>
           <span className="text-xs md:text-sm font-bold bg-clip-text text-transparent whitespace-nowrap" style={{ backgroundImage: 'linear-gradient(90deg, var(--primary-dark), var(--accent))' }}>
                راجع وأرسل
             </span>
@@ -123,7 +123,7 @@ export default function ProgressBar({ currentStep, totalSteps, isReview = false 
         )}
 
         {/* Right side - Step info */}
-        <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border flex-1 justify-center" style={{ background: 'var(--light-bg)', borderColor: 'var(--border)' }}>
+        <div className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-5 py-1.5 md:py-2.5 rounded-full shadow-md border flex-1 justify-center" style={{ background: 'var(--light-bg)', borderColor: 'var(--light-bg)' }}>
           <svg className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" style={{ color: 'var(--primary)' }} fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
           </svg>

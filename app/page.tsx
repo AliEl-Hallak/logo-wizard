@@ -14,17 +14,6 @@ export default function Hero() {
 {/* Arka plan gradient */}
 <div className="absolute inset-0 animated-bg opacity-20 pointer-events-none"></div>
 
-{/* Üst ışık */}
-<div
-  className="absolute -top-[10vh] left-1/2 -translate-x-1/2 w-[140vw] h-[60vh] md:w-[90%] md:h-[90%] blur-3xl opacity-20 pointer-events-none"
-  style={{ background: "radial-gradient(circle at 50% 30%, var(--primary-light), transparent 70%)" }}
-/>
-
-{/* Alt ışık */}
-<div
-  className="absolute -bottom-[10vh] left-1/2 -translate-x-1/2 w-[140vw] h-[60vh] md:w-[80%] md:h-[70%] blur-3xl opacity-15 pointer-events-none"
-  style={{ background: "radial-gradient(circle at 50% 80%, var(--accent), transparent 70%)" }}
-/>
 
       {/* Düzen */}
 <div className="relative z-10 w-full max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-16 px-6 md:px-16 items-center">

@@ -20,7 +20,7 @@
   --light-bg: #fff7ed;
   
   /* 6️⃣ Border */
-  --border: #fed7aa;
+  --border: #cbd5e1;
   
   /* 7️⃣ Koyu Metin */
   --text-dark: #1a1a1a;
@@ -38,6 +38,8 @@
   --shadow: rgba(255, 107, 0, 0.18);
   --backdrop: rgba(0, 0, 0, 0.4);
 }
+
+
 
 /* ============================================
    ANIMATIONS

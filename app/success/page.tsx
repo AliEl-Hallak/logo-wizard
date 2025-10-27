@@ -8,9 +8,9 @@ import Link from 'next/link';
 
 export default function SuccessPage() {
   return (
-    <div className="min-h-[100dvh] relative overflow-hidden px-6 py-10 grid place-items-center lg:block lg:py-14" dir="rtl">
+    <div className=" bg-[var(--light-bg)] min-h-[100dvh] relative overflow-hidden px-6 py-10 grid place-items-center lg:block lg:py-14" dir="rtl">
       {/* Animated Background */}
-      <div className="fixed inset-0 -z-10 animated-bg opacity-30" />
+<div className="absolute inset-0 animated-bg opacity-20 pointer-events-none"></div>
       <motion.div 
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 0.2 }}
@@ -40,7 +40,7 @@ export default function SuccessPage() {
           initial={{ scale: 0.8, opacity: 0, y: 50 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
-          className="glass rounded-3xl shadow-2xl p-8 lg:p-12 backdrop-blur-lg border-2 border-white/50 text-center relative z-20"
+          className="glass rounded-3xl shadow-2xl p-8 lg:p-12 backdrop-blur-lg border-1 border-white/50 text-center relative z-20"
         >
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
