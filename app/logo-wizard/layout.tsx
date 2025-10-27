@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "استبيان تصميم الشعار | Logo Design Survey",
   description: "استبيان احترافي لجمع متطلبات تصميم الشعارات من العملاء",
   icons: {
-    icon: "/newlogo2.png",
+    icon: "/logo2.png",
   },
 };
 
