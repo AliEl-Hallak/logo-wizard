@@ -29,7 +29,7 @@ export default function FloatingButtons() {
 
       {/* Email */}
       <a
-        href="mailto:info@domain.com"
+        href="mailto:loay.creativeworks@gmail.com"
         className="
           fixed bottom-6 left-6
             text-[var(--white)]

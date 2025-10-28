@@ -114,9 +114,9 @@ export default function LogoWizardPage() {
     }
 
     // Review aşamasında: EmailJS ile gönder
-const SERVICE_ID = "service_8x81kdb";
-const TEMPLATE_ID = "template_664qe99";
-const PUBLIC_KEY = "Nhda0CqwRD7smCWe8";
+const SERVICE_ID = "service_r7vhsfs";
+const TEMPLATE_ID = "template_gllae67";
+const PUBLIC_KEY = "zm9HsqwXbUnVwVHCU";
 
 
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
