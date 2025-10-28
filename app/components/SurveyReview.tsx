@@ -253,6 +253,7 @@ export default function SurveyReview({ data, onEdit }: SurveyReviewProps) {
           </div>
           <DataRow label="الحفاظ على الشكل القديم" value={data.keepOldStyle} />
           <DataRow label="موعد التسليم" value={data.deadline} />
+          <DataRow label="ملاحظات إضافية" value={data.additionalNotes} />
         </div>
         <motion.button
           variants={buttonVariants}

@@ -675,16 +675,16 @@ className="glass rounded-3xl p-6 sm:p-8 lg:p-10 backdrop-blur-xl shadow-[0_8px_3
                     />
                   </motion.div>
                   <motion.div variants={{ hidden: { y: -20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}>
-                    <FancySelect
-                      label="هل تريد الحفاظ على شكل الشعار القديم؟"
-                      name="keepOldStyle"
-                      value={formData.keepOldStyle || ''}
-                      onChange={handleInputChange as any}
-                      options={YES_NO_OPTIONS}
-                      optionIcons={OptionIcons}
-                      required
-                      icon={Icons.checkbox}
-                    />
+             <FancySelect
+  label="هل تريد الحفاظ على شكل الشعار القديم؟"
+  name="keepOldStyle"
+  value={formData.keepOldStyle || ''}
+  onChange={handleInputChange as any}
+  options={YES_NO_OPTIONS}
+  optionIcons={OptionIcons}
+  icon={Icons.checkbox}
+/>
+
                   </motion.div>
                   <motion.div variants={{ hidden: { y: -20, opacity: 0 }, visible: { y: 0, opacity: 1 } }}>
                     <FormField
